@@ -1,3 +1,5 @@
+require 'table_constructor/table'
+
 module Autotable
   class Railtie < Rails::Railtie
     initializer 'autotable.tables' do
