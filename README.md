@@ -1,6 +1,6 @@
 # Autotable
 
-A gem that generate HTML tables from your models to display in your admin views. It support pagination (carrierwave), sorting and searching. It is also possible to customize the tables.
+A gem that generate HTML tables from your models to display in your admin views. It supports pagination (carrierwave), sorting and searching. It is also possible to customize the tables.
 
 ## Installation
 

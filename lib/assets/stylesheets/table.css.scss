@@ -1,0 +1,88 @@
+/* Table */
+
+#admin_table {
+  width: 100%;
+  overflow: auto;
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    line-height: 21px;
+    margin: 57px 0 0 0;
+    thead {
+      tr {
+        th {
+          vertical-align: bottom;
+          border-bottom: 1px solid #DADADA;
+          padding: 10px 8px 5px 8px;
+          font-size: 13px;
+          text-align: left;
+          background: #3d3d3e;
+          color: #c0c0c0;
+          font-weight: 400;
+          &:not(:first-child) {
+          }
+          &:not(:last-child) {
+          }
+          a {
+            color:#c0c0c0;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+    tbody {
+      td {
+        font-size: 12px;
+        padding: 7px 8px;
+        &:not(:first-child) {
+          border-left: 1px solid #DADADA;
+        }
+      }
+    }
+    tr.even {
+      background: #f8f8f8;
+    }
+    tr.selected {
+      background: #F0BEBE;
+    }
+  }
+
+  .none {
+    text-align: center;
+  }
+
+  .table_buttons {
+    text-align: right;
+    padding: 20px;
+    position: absolute;
+  }
+
+  .table_buttons a {
+    padding: 7px 10px;
+    border-radius: 3px;
+    color: #fff;
+    font-weight: lighter;
+    font-size: 14px;
+  }
+
+  .table_buttons a {
+    background: #aaa;
+    pointer-events: none;
+    cursor: default;
+  }
+
+  .table_buttons a.on {
+    background: #7f72f5;
+    pointer-events: auto;
+    cursor: auto;
+  }
+
+  .table_buttons a.add {
+    background: #7f72f5;
+    pointer-events: auto;
+    cursor: auto;
+  }
+
+}

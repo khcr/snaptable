@@ -1,0 +1,25 @@
+<%= render file: 'app/tables/templates/search_field' if presenter.options[:search] == true %>
+<%= render file: 'app/tables/templates/buttons' unless presenter.options[:buttons] == false %>
+<table>
+	<thead>
+		<tr>
+			<% presenter.column_names.each do |column| %>
+			<th><%= presenter.sortable(column) %></th>
+			<% end %>
+		</tr>
+	</thead>
+	<tbody>
+		<% if presenter.records.any? %>
+			<% presenter.records.each do |record| %>
+				<tr class="<%= cycle('odd', 'even') %>" data-url="<%= presenter.url(record) %>">
+					<% presenter.values(record).each do |value| %>
+						<td><%= truncate((strip_tags value), length: 40) %></td>
+					<% end %>
+				</tr>
+			<% end %>
+		<% else %>
+			<tr><td class="none" colspan="<%= presenter.column_names.count %>">Il n'y a aucun élément à afficher.</td></tr>
+		<% end %>
+	</tbody>
+</table>
+<%= will_paginate presenter.records %>
