@@ -1,4 +1,4 @@
-require 'table_constructor/table'
+require 'autotable/table_constructor/table'
 
 module Autotable
   class Railtie < Rails::Railtie
