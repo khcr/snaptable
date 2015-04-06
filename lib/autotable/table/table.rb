@@ -1,4 +1,4 @@
-module Table
+module TableConstructor
 	class Table < BaseTable
 
 		def initialize(parent, model, collection = nil, options = {})
