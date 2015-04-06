@@ -1,9 +1,0 @@
-<p>Rechercher</p>
-
-<%= form_tag nil, method: :get, remote: true do %>
-
-	<%= search_field_tag :query, params[:query] %>
-
-	<%= submit_tag "Chercher" %>
-
-<% end %>
