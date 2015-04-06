@@ -1,4 +1,4 @@
-# Autotable
+# Snaptable
 
 A gem that generate HTML tables from your models to display in your admin views. It supports pagination (carrierwave), sorting and searching. It is also possible to customize the tables.
 
@@ -7,7 +7,7 @@ A gem that generate HTML tables from your models to display in your admin views.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'autotable'
+gem 'snaptable'
 ```
 
 And then execute:
@@ -16,7 +16,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install autotable
+    $ gem install snaptable
 
 ## Usage
 
@@ -24,7 +24,7 @@ TODO: Write usage instructions here
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/autotable/fork )
+1. Fork it ( https://github.com/khcr/snaptable/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

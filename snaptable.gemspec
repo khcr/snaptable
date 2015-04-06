@@ -1,17 +1,17 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'autotable/version'
+require 'snaptable/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "autotable"
-  spec.version       = Autotable::VERSION
+  spec.name          = "snaptable"
+  spec.version       = Snaptable::VERSION
   spec.authors       = ["khcr"]
   spec.email         = ["kocher.ke@gmail.com"]
 
   spec.summary       = "A gem that generate HTML tables from your models to display in your admin views."
   spec.description   = spec.summary
-  spec.homepage      = "http://github.com/khcr/autotable"
+  spec.homepage      = "http://github.com/khcr/snaptable"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
