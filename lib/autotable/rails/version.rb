@@ -1,5 +1,5 @@
 module Autotable
   module Rails
-    VERSION = "4.0.3"
+    VERSION = "0.1.3"
   end
 end
