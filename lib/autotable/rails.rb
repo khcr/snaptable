@@ -1,6 +1,7 @@
+require 'autotable/rails/engine'
+require 'autotable/rails/version'
+
 module Autotable
   module Rails
-    class Engine < ::Rails::Engine
-    end
   end
 end
