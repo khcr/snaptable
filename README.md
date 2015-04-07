@@ -18,13 +18,13 @@ Or install it yourself as:
 
     $ gem install snaptable
 
-The gem requires also jQuery.
+The gem also requires jQuery.
 
 ## Usage
 
 ### Basic table
 
-In your controller, instanciate a new `Table` with minimum two arguments: the controller itself and the model to use.
+In your controller, instantiate a new `Table` with minimum two arguments: the controller itself and the model to use.
 
 ```ruby
 def index
@@ -49,11 +49,11 @@ Finally, in your view, generate the table where you wish.
 </div>
 ```
 
-The elements in the table are clickable. Click on an element and use the links above the table to edit or destroy it. If you double-click, you are directly redirect to the edit page.
+The elements in the table are clickable. Click on an element and use the links above the table to edit or destroy it. If you double-click, you are directly redirect to the edit page. Furthermore, the columns are sortable. Click on a label to sort the data by a column.
 
 ### Options
 
-You can customize the table when you instanciate it. Pass you own collection in the third argument.
+You can customize the table when you instantiate it. Pass you own collection in the third argument.
 
 ```ruby
 @articles = Article.last(3)
@@ -86,8 +86,8 @@ class ArticleTable < BaseTable
 end
 ```
 
-From that point, you have a working table, but it acts exactly the same than the basic table. You have few possibilites to change the behavior.
-If you want to change the table's columns, write a method `attributes` that return an array of the model's attributes you want to display. It supports associations by allowing you to put a hash.
+From that point, you have a working table, but it acts exactly the same than the basic table. You have few possibilities to change the behavior.
+If you want to change the table's columns, write a method `attributes` that returns an array of the model's attributes you want to display. It supports associations by allowing you to put a hash.
 
 ```ruby
 def attributes
@@ -95,7 +95,7 @@ def attributes
 end
 ```
 
-You can also change how the URL to edit and delete an element is generated. By default it uses the element's id, but you can specify an other attribute. Write a method `url` that returns the attribute.
+You can also change how the URL to edit and delete an element is generated. By default, it uses the element's id, but you can specify an other attribute. Write a method `url` that returns an attribute.
 
 ```ruby
 def url
