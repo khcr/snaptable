@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["khcr"]
   spec.email         = ["kocher.ke@gmail.com"]
 
-  spec.summary       = "A gem that generate HTML tables from your models to display in your admin views."
+  spec.summary       = "A gem that generate HTML tables from your models in order to display them in your admin views."
   spec.description   = spec.summary
   spec.homepage      = "http://github.com/khcr/snaptable"
   spec.license       = "MIT"
