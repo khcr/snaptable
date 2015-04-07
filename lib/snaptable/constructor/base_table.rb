@@ -3,7 +3,7 @@ require 'snaptable/constructor/collection'
 require 'snaptable/constructor/renderer'
 
 module Snaptable
-  module Constructor 
+  module Constructor
 
       class BaseTable < SimpleDelegator
         include Sortable
@@ -21,22 +21,8 @@ module Snaptable
           @options
         end
 
-        def column_names
-          model.column_names
-        end
-
-        def url(e)
-          e.id
-        end
-
-        def values(element)
-          attributes.map do |attribute|
-            if attribute.is_a? Symbol 
-              element.send(attribute)
-            else
-              element.send(*attribute.keys).send(*attribute.values)
-            end.to_s
-          end
+        def url
+          :id
         end
 
         private
@@ -49,3 +35,5 @@ module Snaptable
 
   end
 end
+
+BaseTable = Snaptable::Constructor::BaseTable

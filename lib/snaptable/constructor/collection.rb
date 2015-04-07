@@ -33,11 +33,15 @@ module Snaptable
       end
 
       def query_fields
-        self.class::Search.fields || { model.table_name => model.columns.select{ |c| c.type == :string }.map{ |c| c.name } }
+        if self.class.const_defined?(:Search)
+          self.class::Search.fields
+        else
+          { model.table_name => model.columns.select{ |c| c.type == :string }.map{ |c| c.name } }
+        end
       end
 
       def search_associations
-        self.class::Search.associations
+        self.class::Search.associations if self.class.const_defined?(:Search)
       end
 
       def belongs_to_associations

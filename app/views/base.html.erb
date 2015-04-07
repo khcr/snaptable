@@ -1,4 +1,4 @@
-<div id="admin_table">
+<div id="snaptable">
 
 	<%= render 'search_field' if presenter.options[:search] == true %>
 	<%= render 'buttons' unless presenter.options[:buttons] == false %>
@@ -13,7 +13,7 @@
 		<tbody>
 			<% if presenter.records.any? %>
 				<% presenter.records.each do |record| %>
-					<tr class="<%= cycle('odd', 'even') %>" data-url="<%= presenter.url(record) %>">
+					<tr class="<%= cycle('odd', 'even') %>" data-url="<%= record.send(presenter.url) %>">
 						<% presenter.values(record).each do |value| %>
 							<td><%= truncate((strip_tags value), length: 40) %></td>
 						<% end %>

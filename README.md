@@ -18,6 +18,8 @@ Or install it yourself as:
 
     $ gem install snaptable
 
+The gem requires also jQuery.
+
 ## Usage
 
 ### Basic table
@@ -47,6 +49,8 @@ Finally, in your view, generate the table where you wish.
 </div>
 ```
 
+The elements in the table are clickable. Click on an element and use the links above the table to edit or destroy it. If you double-click, you are directly redirect to the edit page.
+
 ### Options
 
 You can customize the table when you instanciate it. Pass you own collection in the third argument.
@@ -67,18 +71,78 @@ Table.new(self, Article, nil, { search: true, buttons: false })
 
 ### Custom class
 
-TODO
+If you need more control on the displayed fields or on the search, you can easily create your own table.
+Create a directory `app/tables`. Then create a file `my_model_table.rb`. Inside declare a class `MyModelTable` that inherits from `BaseTable`.
+You must necessarily write a method called `model` that returns the model to use for your table.
 
-### Permissions
+```ruby
+# article_table.rb
+class ArticleTable < BaseTable
+
+  def model
+    Article
+  end
+
+end
+```
+
+From that point, you have a working table, but it acts exactly the same than the basic table. You have few possibilites to change the behavior.
+If you want to change the table's columns, write a method `attributes` that return an array of the model's attributes you want to display. It supports associations by allowing you to put a hash.
+
+```ruby
+def attributes
+  [:title, :content, { user: :name }]
+end
+```
+
+You can also change how the URL to edit and delete an element is generated. By default it uses the element's id, but you can specify an other attribute. Write a method `url` that returns the attribute.
+
+```ruby
+def url
+  :slug
+end
+```
+
+By default, the search is done on the string fields of the model. If you want to search on the associations, create a module `Search` inside the class. Then declare a method `self.fields` that returns a hash and `self.associations` that returns an array. Be careful, the search is only possible on string fields.
+
+```ruby
+class ArticleTable < BaseTable
+
+  def model
+    Article
+  end
+
+  def attributes
+    [:title, :content, { user: :name }]
+  end
+
+  def url
+    :slug
+  end
+
+  module Search
+
+    def self.associations
+      [:user, :category]
+    end
+
+    def self.fields
+      { articles: [:title, :content], user: [:name, :email], category: [:name] }
+    end
+
+  end
+```
+
+### Permission
 
 if you want to use a permission system, you can enable it in an initializer.
 
 ```ruby
-# snaptable.rb
+# initializers/snaptable.rb
 Snaptable.use_permission = true
 ```
 
-When the table fetches the data, it will use `current_permission.records(controller, model, token)`. It is up to you to implement a class and its method that respond to those three arguments.
+When the table fetches the data, it will use `current_permission.records(controller, model, token)`. It is up to you to implement the class and its method that respond to those three arguments.
 
 ## Contributing
 

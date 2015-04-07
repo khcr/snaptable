@@ -1,21 +1,22 @@
 /* Admin table */
 
-$(document).on("ready page:load", function() {
+function snapifyTable() {
   
-  var tableButtons = $('.table_buttons'),
+  var snaptable = $('#snaptable')
+
+  var tableButtons = snaptable.find('.table_buttons'),
       editButton = tableButtons.find('a[class="edit"]'),
       deleteButton = tableButtons.find('a[class="delete"]'),
       path = window.location.pathname + '/';
-      table = $("#admin_table");
 
   // add ajax to the pagination
-  table.on("click", ".pagination a", function() {
+  snaptable.on("click", ".pagination a", function() {
     $.getScript(this.href);
     return false;
   });
 
   // line clickable
-  table.on("click", "tbody tr", function(e) {
+  snaptable.on("click", "tbody tr", function(e) {
     var id = $(this).data('url') ;
     if ( typeof id !== 'undefined' && !$(this).hasClass('selected') ) {
       $('tr.selected').removeClass('selected');
@@ -27,11 +28,17 @@ $(document).on("ready page:load", function() {
   });
 
   // Double click
-  table.on("dblclick", "tbody tr", function() {
+  snaptable.on("dblclick", "tbody tr", function() {
     var id = $(this).data('url');
     if ( typeof id !== 'undefined' ) {
       window.location = path + id + '/edit';
     }
   });
+
+}
+
+$(document).on("ready page:load", function() {
+
+  snapifyTable();
 
 });
