@@ -14,7 +14,7 @@ module Snaptable
           super(parent)
           @collection = collection
           @options = options
-          @token = stored_token
+          @token = stored_token if Snaptable.use_permission
         end
 
         def options

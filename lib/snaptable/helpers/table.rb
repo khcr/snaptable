@@ -24,6 +24,17 @@ module Snaptable
 				@model
 			end
 
+			module Search
+
+				def self.associations
+			 		nil
+			 	end
+
+			 	def self.fields
+			 		nil
+			 	end
+
+			end
 		end
 	end
 end

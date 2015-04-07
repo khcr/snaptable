@@ -65,6 +65,21 @@ Pass the options in the fourth argument. Here is a list:
 Table.new(self, Article, nil, { search: true, buttons: false })
 ```
 
+### Custom class
+
+TODO
+
+### Permissions
+
+if you want to use a permission system, you can enable it in an initializer.
+
+```ruby
+# snaptable.rb
+Snaptable.use_permission = true
+```
+
+When the table fetches the data, it will use `current_permission.records(controller, model, token)`. It is up to you to implement a class and its method that respond to those three arguments.
+
 ## Contributing
 
 1. Fork it ( https://github.com/khcr/snaptable/fork )
