@@ -23,4 +23,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
 
   spec.add_dependency "railties", ">= 4.2.0"
+  spec.add_dependency "will_paginate", ">= 3.0.0"
 end
