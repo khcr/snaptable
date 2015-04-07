@@ -25,14 +25,18 @@ Or install it yourself as:
 In your controller, instanciate a new `Table` with minimum two arguments: the controller itself and the model to use.
 
 ```ruby
-@table = Table.new(self, Article)
+def index
+  @table = Table.new(self, Article)
+end
 ```
 
 Then, in order to enable sorting, call the method `respond` on the table.
 
 ```ruby
-@table = Table.new(self, Article)
-@table.respond
+def index
+  @table = Table.new(self, Article)
+  @table.respond
+end
 ```
 
 Finally, in your view, generate the table where you wish.
@@ -54,7 +58,7 @@ Table.new(self, Article, @articles)
 
 Pass the options in the fourth argument. Here is a list:
 
-* buttons [true]: disable the buttons above the table to add, edit or destroy an element.
+* buttons [true]: enable the buttons above the table to add, edit or destroy an element.
 * search [false]: enable searching. Add a search field above the table.
 
 ```ruby
