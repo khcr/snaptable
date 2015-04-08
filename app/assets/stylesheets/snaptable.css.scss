@@ -1,15 +1,23 @@
 /* Table */
 
 #snaptable {
+  * {
+    padding: 0;
+    margin: 0;
+  }
   width: 100%;
+  font-family: "helvetica neue", "helvetica", "sans-serif";
   overflow: auto;
+  a {
+    text-decoration: none;
+  }
 
   table {
     border-collapse: collapse;
     width: 100%;
     max-width: 100%;
-    line-height: 21px;
-    margin: 57px 0 0 0;
+    line-height: 25px;
+    margin: 20px 0 20px 0;
     thead {
       tr {
         th {
@@ -35,6 +43,7 @@
     tbody {
       td {
         font-size: 12px;
+        color: #333;
         padding: 7px 8px;
         &:not(:first-child) {
           border-left: 1px solid #DADADA;
@@ -53,36 +62,49 @@
     text-align: center;
   }
 
+  .search {
+    display: inline-block;
+    padding: 0 10px 0 0;
+    input {
+      font-family: "helvetica neue", "helvetica", "sans-serif";
+      padding: 7px 10px;
+      border-radius: 3px;
+      color: #fff;
+      -webkit-font-smoothing: antialiased;
+      font-size: 14px;
+      background: #7f72f5;
+      border: none;
+      margin: 5px 0;
+      &[type=submit] {
+        cursor: pointer;
+      }
+    }
+  }
+
   .table_buttons {
-    text-align: right;
-    padding: 20px;
-    position: absolute;
-  }
-
-  .table_buttons a {
-    padding: 7px 10px;
-    border-radius: 3px;
-    color: #fff;
-    font-weight: lighter;
-    font-size: 14px;
-  }
-
-  .table_buttons a {
-    background: #aaa;
-    pointer-events: none;
-    cursor: default;
-  }
-
-  .table_buttons a.on {
-    background: #7f72f5;
-    pointer-events: auto;
-    cursor: auto;
-  }
-
-  .table_buttons a.add {
-    background: #7f72f5;
-    pointer-events: auto;
-    cursor: auto;
+    display: inline-block;
+    a {
+        padding: 7px 10px;
+        border-radius: 3px;
+        color: #fff;
+        -webkit-font-smoothing: antialiased;
+        font-size: 14px;
+        background: #aaa;
+        pointer-events: none;
+        cursor: default;
+        display: inline-block;
+        margin: 5px 0;
+      &.on {
+        background: #7f72f5;
+        pointer-events: auto;
+        cursor: auto;
+      }
+      &.add {
+        background: #7f72f5;
+        pointer-events: auto;
+        cursor: auto;
+      }
+    }
   }
 
 }
