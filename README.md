@@ -18,8 +18,6 @@ Or install it yourself as:
 
     $ gem install snaptable
 
-The gem also requires jQuery.
-
 ## Usage
 
 ### Basic table
