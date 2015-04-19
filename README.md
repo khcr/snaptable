@@ -67,6 +67,14 @@ Pass the options in the fourth argument. Here is a list:
 Table.new(self, Article, nil, { search: true, buttons: false })
 ```
 
+You can also configure the table in the view. The `present` method takes a single named argument to let you add a custom buttons bar. Pass the name of a partial to the parameter `buttons` and the content will be added above the table.
+
+```erb
+<div>
+  <%= @table.present(buttons: "my_custom_partial") %>
+</div>
+```
+
 ### Custom class
 
 If you need more control on the displayed fields or on the search, you can easily create your own table.
