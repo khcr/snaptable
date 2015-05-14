@@ -18,6 +18,24 @@ Or install it yourself as:
 
     $ gem install snaptable
 
+Include the assets:
+
+```css
+# application.css
+/*
+ *= require_self
+ *= require_tree .
+ *= require snaptable
+ */
+
+```
+
+```js
+# application.js
+//= require_tree .
+//= require snaptable
+```
+
 ## Usage
 
 ### Basic table
