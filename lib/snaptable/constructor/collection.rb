@@ -27,8 +27,8 @@ module Snaptable
       def query
         query_fields.map do |key, values|
           values.map do |value|
-            values.map{ |v| "#{key}.#{v} LIKE :query OR"}.join(" ")
-          end
+            "#{key}.#{value} LIKE :query OR"
+          end.join(" ")
         end.join(" ") + " #{column_name('id')} = :id"
       end
 
