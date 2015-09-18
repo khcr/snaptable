@@ -15,7 +15,7 @@ module Snaptable
       end
 
       def filter(collection)
-        if options[:search] == true
+        if options[:search] == true && !params[:query].blank?
           collection.joins(search_associations).where(query, query: "%#{params[:query]}%", id: params[:query].to_i)
         else
           collection
