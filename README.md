@@ -159,7 +159,7 @@ class ArticleTable < BaseTable
 
 ### Enums
 
-The gem supports enum's type in your model. If it detects a column that is an enum, it will automatically looks for the localized path "#{model.model_name.singular}.#{enum.pluralize}.#{enum_value}". For example: "member.statuses.active".
+The gem supports enum's type in your model. If it detects a column that is an enum, it will automatically looks for the localized path `#{model.model_name.singular}.#{enum.pluralize}.#{enum_value}`. For example: `member.statuses.active`.
 
 ### i18n
 
