@@ -30,16 +30,22 @@ module Snaptable
           else
             element.send(*attribute.keys).send(*attribute.values)
           end
-          format_if_date(attr_value)
+          format(attribute, attr_value)
         end
       end
 
-      def format_if_date(attr_value)
+      def format(attribute, attr_value)
         if attr_value.is_a?(Date) || attr_value.is_a?(Time) || attr_value.is_a?(DateTime)
-          attr_value.strftime("%d.%m.%y %H:%M")
+          l attr_value, format: :snaptable
+        elsif attribute.to_s.in? enums
+          t "#{model.model_name.singular}.#{attribute.to_s.pluralize}.#{attr_value}"
         else
           attr_value
         end.to_s
+      end
+
+      def enums
+        model.defined_enums.keys
       end
 
     end

@@ -1,6 +1,4 @@
-require 'snaptable/version'
-require 'snaptable/railtie' if defined?(Rails)
-require 'snaptable/rails'
+require 'snaptable/engine'
 
 module Snaptable
   @@use_permission = false

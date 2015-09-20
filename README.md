@@ -157,6 +157,27 @@ class ArticleTable < BaseTable
   end
 ```
 
+### Enums
+
+The gem supports enum's type in your model. If it detects a column that is an enum, it will automatically looks for the localized path "#{model.model_name.singular}.#{enum.pluralize}.#{enum_value}". For example: "member.statuses.active".
+
+### i18n
+
+To display date & time columns, the gem uses a format named `snaptable`. You can easily override it in your localization file:
+
+```yml
+# en.yml
+
+time:
+  format:
+    snaptable: "%m.d.%y %H:%M"
+
+```
+
+### Gotchas
+
+If you're using Postgresql, array types and want to enable searching, then you must create a custom table and specify the fields to search (see above). You must exclude the array columns from the search or it will raise an error.
+
 ### Permission
 
 if you want to use a permission system, you can enable it in an initializer.
