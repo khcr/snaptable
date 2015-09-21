@@ -7,5 +7,9 @@ module Snaptable
     initializer 'Snaptable.tables' do
       ActionController::Base.send :include, Helpers
     end
+
+    initializer 'Snaptable.buttons_helper' do
+      ActionView::Base.send(:include, ButtonsHelper)
+    end
   end
 end
