@@ -1,0 +1,7 @@
+en:
+  time:
+    formats:
+      snaptable: "%m.%d.%y %H:%M"
+  date:
+    formats:
+      snaptable: "%m.%d.%y"
