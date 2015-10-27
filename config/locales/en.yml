@@ -8,7 +8,7 @@ en:
   table:
     nothing: "Nothing to display"
     search:
-      title: "Seach"
+      title: "Search"
       submit: "Search"
     buttons:
       title: "Actions"
