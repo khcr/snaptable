@@ -26,7 +26,7 @@
 					</tr>
 				<% end %>
 			<% else %>
-				<tr><td class="none" colspan="<%= presenter.column_names.count %>">Il n'y a aucun élément à afficher.</td></tr>
+				<tr><td class="none" colspan="<%= presenter.column_names.count %>"><%= t("table.nothing") %></td></tr>
 			<% end %>
 		</tbody>
 	</table>

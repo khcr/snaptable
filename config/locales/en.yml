@@ -5,3 +5,14 @@ en:
   date:
     formats:
       snaptable: "%m.%d.%y"
+  table:
+    nothing: "Nothing to display"
+    search:
+      title: "Seach"
+      submit: "Search"
+    buttons:
+      title: "Actions"
+      add:  "Add"
+      edit: "Edit"
+      show: "Show"
+      delete: "Delete"
