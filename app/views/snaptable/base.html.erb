@@ -1,13 +1,10 @@
 <div id="snaptable">
 	<%= render 'snaptable/search_field' if presenter.options[:search] == true %>
-	<%= render 'snaptable/buttons' unless presenter.options[:buttons] == false %>
-
-	<% if buttons %>
-		<div class="table_buttons">
-			<%= render buttons if buttons %>
-		</div>
-	<% end %>
 	
+	<div class="table_buttons">
+		<%= render presenter.instance_variable_get(:@buttons) unless presenter.options[:buttons] == false %>
+	</div>
+
 	<table>
 		<thead>
 			<tr>

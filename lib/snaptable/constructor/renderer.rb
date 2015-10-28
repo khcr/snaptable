@@ -3,7 +3,8 @@ module Snaptable
     module Renderer
 
       def present(buttons: nil)
-        render_to_string('/snaptable/base', layout: false, locals: { presenter: self, buttons: buttons}).html_safe
+        @buttons = buttons || "snaptable/buttons"
+        render_to_string('/snaptable/base', layout: false, locals: { presenter: self }).html_safe
       end
 
       def respond

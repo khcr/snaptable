@@ -1,2 +1,3 @@
-$('#snaptable').replaceWith('<%= j @table.present %>') ;
+var snaptable = $("#snaptable");
+snaptable.replaceWith('<%= j @table.present(buttons: params[:partial]) %>');
 snapifyTable();

@@ -1,4 +1,5 @@
-require 'snaptable/helpers/table'
+require 'snaptable/helpers/table_helper'
+require 'snaptable/helpers/buttons_helper'
 
 module Snaptable
   class Engine < ::Rails::Engine
@@ -6,11 +7,11 @@ module Snaptable
     require 'jquery-rails'
 
     initializer 'Snaptable.tables' do
-      ActionController::Base.send :include, Helpers
+      ActionController::Base.send :include, Helpers::TableHelper
     end
 
     initializer 'Snaptable.buttons_helper' do
-      ActionView::Base.send(:include, ButtonsHelper)
+      ActionView::Base.send :include, Helpers::ButtonsHelper
     end
   end
 end

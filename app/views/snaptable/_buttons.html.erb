@@ -1,20 +1,18 @@
-<div class="table_buttons">
-	<p><%= t("table.buttons.title") %></p>
-	<p>
-    <% if add_button? %>
-		  <%= link_to t("table.buttons.add"), request.path + "/new", class: "add" %>
-    <% end %>
-    <% if  edit_button? %>
-		  <a class="edit" href="#"><%= t("table.buttons.edit") %></a>
-    <% end %>
-    <% if show_button? %>
-      <a class="show" href="#"><%= t("table.buttons.show") %></a>
-    <% end %>
-    <% if delete_button? %>
-		  <a class="delete" href="#" data-method="delete" 
-      rel="nofollow" data-confirm="Etes-vous sûr de vouloir supprimer cette entrée ?">
-        <%= t("table.buttons.delete") %>
-      </a>
-    <% end %>
-	</p>
-</div>
+<p><%= t("table.buttons.title") %></p>
+<p>
+  <% if add_button? %>
+	  <%= link_to t("table.buttons.add"), request.path + "/new", class: "add" %>
+  <% end %>
+  <% if  edit_button? %>
+	  <a class="edit" href="#"><%= t("table.buttons.edit") %></a>
+  <% end %>
+  <% if show_button? %>
+    <a class="show" href="#"><%= t("table.buttons.show") %></a>
+  <% end %>
+  <% if delete_button? %>
+	  <a class="delete" href="#" data-method="delete" 
+    rel="nofollow" data-confirm="Etes-vous sûr de vouloir supprimer cette entrée ?">
+      <%= t("table.buttons.delete") %>
+    </a>
+  <% end %>
+</p>
