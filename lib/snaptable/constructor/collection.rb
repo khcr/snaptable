@@ -3,11 +3,7 @@ module Snaptable
     module Collection
 
       def collection
-        @collection ||= if Snaptable.use_permission 
-          current_permission.records(params[:controller], model, @token)
-        else
-          model
-        end.includes(belongs_to_associations)
+        model.includes(belongs_to_associations)
       end
 
       def records

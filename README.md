@@ -180,14 +180,12 @@ If you're using Postgresql, array types and want to enable searching, then you m
 
 ### Permission
 
-if you want to use a permission system, you can enable it in an initializer.
+if you want to use the `adeia` gem which provides a permission system:
 
 ```ruby
 # initializers/snaptable.rb
 Snaptable.use_permission = true
 ```
-
-When the table fetches the data, it will use `current_permission.records(controller, model, token)`. It is up to you to implement the class and its method that respond to those three arguments.
 
 ## Contributing
 

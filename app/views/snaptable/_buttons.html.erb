@@ -1,18 +1,7 @@
 <p><%= t("table.buttons.title") %></p>
 <p>
-  <% if add_button? %>
-	  <%= link_to t("table.buttons.add"), request.path + "/new", class: "add" %>
-  <% end %>
-  <% if  edit_button? %>
-	  <a class="edit" href="#"><%= t("table.buttons.edit") %></a>
-  <% end %>
-  <% if show_button? %>
-    <a class="show" href="#"><%= t("table.buttons.show") %></a>
-  <% end %>
-  <% if delete_button? %>
-	  <a class="delete" href="#" data-method="delete" 
-    rel="nofollow" data-confirm="Etes-vous sûr de vouloir supprimer cette entrée ?">
-      <%= t("table.buttons.delete") %>
-    </a>
-  <% end %>
+  <%= add_button if Snaptable.add_button && add_button? %>
+  <%= edit_button if Snaptable.edit_button && edit_button? %>
+  <%= show_button if Snaptable.show_button && show_button? %>
+  <%= delete_button if Snaptable.delete_button && delete_button? %>
 </p>
