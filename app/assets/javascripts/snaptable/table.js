@@ -33,12 +33,14 @@ function snapifyTable() {
   });
 
   // Double click
-  snaptable.on("dblclick", "tbody tr", function() {
-    var id = $(this).data("url");
-    if ( typeof id !== "undefined" ) {
-      window.location = path + id + "/edit";
-    }
-  });
+  if(editButton.length) {
+    snaptable.on("dblclick", "tbody tr", function() {
+      var id = $(this).data("url");
+      if ( typeof id !== "undefined" ) {
+        window.location = path + id + "/edit";
+      }
+    });
+  }
 
 }
 
