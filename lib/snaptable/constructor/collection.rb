@@ -3,7 +3,7 @@ module Snaptable
     module Collection
 
       def collection
-        model.includes(belongs_to_associations)
+        @collection.includes(belongs_to_associations)
       end
 
       def records

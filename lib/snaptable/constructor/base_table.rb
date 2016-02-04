@@ -12,8 +12,8 @@ module Snaptable
 
         def initialize(parent, collection = nil, options = {})
           super(parent)
-          @collection = collection
           @options = options
+          @collection = collection || model.none
           @token = stored_token if Snaptable.use_permission
         end
 
