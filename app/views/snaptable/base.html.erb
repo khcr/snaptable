@@ -1,6 +1,6 @@
 <div id="snaptable">
 	<%= render 'snaptable/search_field' if presenter.options[:search] == true %>
-	
+
 	<div class="table_buttons">
 		<%= render presenter.instance_variable_get(:@buttons) unless presenter.options[:buttons] == false %>
 	</div>
@@ -20,7 +20,7 @@
 						<% presenter.values(record).each do |value| %>
 							<td><%= truncate((strip_tags value), length: 40) %></td>
 						<% end %>
-					</tr>
+					</tr>          
 				<% end %>
 			<% else %>
 				<tr><td class="none" colspan="<%= presenter.column_names.count %>"><%= t("table.nothing") %></td></tr>

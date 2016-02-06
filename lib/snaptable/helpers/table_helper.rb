@@ -6,8 +6,8 @@ module Snaptable
 			class Table < Snaptable::Constructor::BaseTable
 
 				def initialize(parent, model, collection = nil, options = {})
+          @model = model
 					super(parent, collection, options)
-					@model = model
 				end
 
 				def model
