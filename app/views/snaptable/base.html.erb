@@ -1,4 +1,4 @@
-<div id="snaptable">
+<div class="snaptable <%= presenter.table_name %>">
 	<%= render 'snaptable/search_field' if presenter.options[:search] == true %>
 
 	<div class="table_buttons">
@@ -20,13 +20,13 @@
 						<% presenter.values(record).each do |value| %>
 							<td><%= truncate((strip_tags value), length: 40) %></td>
 						<% end %>
-					</tr>          
+					</tr>
 				<% end %>
 			<% else %>
 				<tr><td class="none" colspan="<%= presenter.column_names.count %>"><%= t("table.nothing") %></td></tr>
 			<% end %>
 		</tbody>
 	</table>
-	<%= will_paginate presenter.records %>
+	<%= will_paginate presenter.records, param_name: presenter.paginate_key, params: { table: presenter.table_name } %>
 
 </div>

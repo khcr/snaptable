@@ -7,7 +7,7 @@ module Snaptable
       end
 
       def records
-        @records ||= filter(collection).paginate(page: params[:page], per_page: 30).order(sort_column + " " + sort_direction)
+        @records ||= filter(collection).paginate(page: params[paginate_key], per_page: 30).order(sort_column + " " + sort_direction)
       end
 
       def filter(collection)

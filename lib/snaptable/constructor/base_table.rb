@@ -25,6 +25,14 @@ module Snaptable
           :id
         end
 
+        def table_name
+          self.class.name.underscore
+        end
+
+        def paginate_key
+          "#{table_name}_page"
+        end
+
         private
 
         def stored_token

@@ -157,6 +157,18 @@ class ArticleTable < BaseTable
   end
 ```
 
+### Multiple tables
+
+Snaptable supports multiple tables on the same page. However, if you want sorting for your tables to work, then type the following in the controller:
+
+```ruby
+def index
+  @user_table = UserTable.new(self)
+  @group_table = GroupTable.new(self)
+  Snaptable.respond_with(self, @user_table, @group_table)
+end
+```
+
 ### Enums
 
 The gem supports enum's type in your model. If it detects a column that is an enum, it will automatically looks for the localized path `#{model.model_name.singular}.#{enum.pluralize}.#{enum_value}`. For example: `member.statuses.active`.

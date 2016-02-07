@@ -1,5 +1,5 @@
 module Snaptable
-  module Constructor    
+  module Constructor
     module Renderer
 
       def present(buttons: nil)
@@ -10,7 +10,9 @@ module Snaptable
       def respond
         respond_to do |format|
           format.html
-          format.js { render '/snaptable/sort' }
+          format.js do
+            render '/snaptable/sort', locals: { content: self.present(buttons: @buttons) }
+          end
         end
       end
 

@@ -14,6 +14,10 @@ module Snaptable
 					@model
 				end
 
+        def table_name
+          model.model_name.singular
+        end
+
 			end
 		end
 	end

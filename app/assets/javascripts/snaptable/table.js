@@ -3,9 +3,7 @@
 
 /* Admin table */
 
-function snapifyTable() {
-  
-  var snaptable = $("#snaptable");
+function snapifyTable(snaptable) {
 
   var tableButtons = snaptable.find(".table_buttons"),
       editButton = tableButtons.find("a[class='edit']"),
@@ -23,7 +21,7 @@ function snapifyTable() {
   snaptable.on("click", "tbody tr", function(e) {
     var id = $(this).data("url") ;
     if ( typeof id !== "undefined" && !$(this).hasClass("selected") ) {
-      $("tr.selected").removeClass("selected");
+      snaptable.find("tr.selected").removeClass("selected");
       $(this).addClass("selected");
       deleteButton.add(editButton).add(showButton).addClass("on");
       editButton.attr("href", path + id + "/edit");
@@ -44,8 +42,16 @@ function snapifyTable() {
 
 }
 
+function snapifyTables() {
+
+  $(".snaptable").each(function() {
+    snapifyTable($(this));
+  })
+
+}
+
 $(document).on("ready page:load", function() {
 
-  snapifyTable();
+  snapifyTables();
 
 });
