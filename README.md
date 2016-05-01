@@ -108,7 +108,7 @@ Notice that you can customize the buttons header application-wide. With the foll
 
 ```ruby
 Snaptable.add_button = true
-Snaptable.dit_button = true
+Snaptable.edit_button = true
 Snaptable.delete_button = true
 Snaptable.show_button = false
 ```
