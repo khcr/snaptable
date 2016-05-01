@@ -94,8 +94,8 @@ You can also configure the table in the view. The `present` method takes a singl
 ```
 To help you build your custom buttons header, you are provided two helper methods for each of the possible actions (add, show, edit, delete):
 
-`#{action}_button` returns the HTML code to display the button for the desired action, e.g `add_button`.
-`#{action}_button?` returns if the user is allowed to see the desired button, e.g. `delete_button?`.
+* `#{action}_button` returns the HTML code to display the button for the desired action, e.g `add_button`.
+* `#{action}_button?` returns if the user is allowed to see the desired button, e.g. `delete_button?`.
 
 ```erb
 <div id="custom-buttons">
