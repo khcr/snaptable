@@ -92,6 +92,26 @@ You can also configure the table in the view. The `present` method takes a singl
   <%= @table.present(buttons: "my_custom_partial") %>
 </div>
 ```
+To help you build your custom buttons header, you are provided two helper methods for each of the possible actions (add, show, edit, delete):
+
+`#{action}_button` returns the HTML code to display the button for the desired action, e.g `add_button`.
+`#{action}_button?` returns if the user is allowed to see the desired button, e.g. `delete_button?`.
+
+```erb
+<div id="custom-buttons">
+  <p>This is my custom table header !</p>
+  <%= add_button if add_button? %>
+<div>
+```
+
+Notice that you can customize the buttons header application-wide. With the following options, you decide which buttons are displayed by default.
+
+```ruby
+Snaptable.add_button = true
+Snaptable.dit_button = true
+Snaptable.delete_button = true
+Snaptable.show_button = false
+```
 
 ### Custom class
 
@@ -185,6 +205,8 @@ time:
     snaptable: "%m.d.%y %H:%M"
 
 ```
+
+See the [localization files](config/locales) to see all the keys you can override.
 
 ### Gotchas
 
