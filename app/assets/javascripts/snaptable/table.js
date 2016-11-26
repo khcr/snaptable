@@ -50,7 +50,7 @@ function snapifyTables() {
 
 }
 
-$(document).on("ready page:load", function() {
+$(document).on("ready turbolinks:load", function() {
 
   snapifyTables();
 
