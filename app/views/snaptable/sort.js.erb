@@ -1,2 +1,4 @@
-$('#snaptable').replaceWith('<%= j @table.present %>') ;
-snapifyTable();
+var tableName = "<%= params[:table] %>";
+var snaptable = $(".snaptable." + tableName);
+snaptable.replaceWith('<%= j content %>');
+snapifyTable($(".snaptable." + tableName));

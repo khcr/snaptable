@@ -12,8 +12,8 @@ module Snaptable
 
         def initialize(parent, collection = nil, options = {})
           super(parent)
-          @collection = collection
           @options = options
+          @collection = collection || model
           @token = stored_token if Snaptable.use_permission
         end
 
@@ -23,6 +23,14 @@ module Snaptable
 
         def url
           :id
+        end
+
+        def table_name
+          self.class.name.underscore
+        end
+
+        def paginate_key
+          "#{table_name}_page"
         end
 
         private

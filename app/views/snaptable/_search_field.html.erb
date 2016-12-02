@@ -1,7 +1,7 @@
 <div class="search">
-	<p>Rechercher</p>
+	<p><%= t("table.search.title") %></p>
 	<%= form_tag nil, method: :get, remote: true do %>
 		<%= search_field_tag :query, params[:query] %>
-		<%= submit_tag "Chercher" %>
+		<%= submit_tag t("table.search.submit") %>
 	<% end %>
 </div>

@@ -1,73 +1,77 @@
 /* Table */
 
-#snaptable {
+.snaptable {
   * {
     padding: 0;
     margin: 0;
   }
   width: 100%;
   font-family: "helvetica neue", "helvetica", "sans-serif";
-  overflow: auto;
   a {
     text-decoration: none;
   }
-  // show scrollbar
-  &::-webkit-scrollbar {
-      -webkit-appearance: none;
-      width: 7px;
-  }
-  &::-webkit-scrollbar-thumb {
-      border-radius: 4px;
-      background-color: rgba(0,0,0,.5);
-      -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
-  }
 
-  table {
-    border-collapse: collapse;
-    width: 100%;
-    max-width: 100%;
-    line-height: 25px;
-    margin: 20px 0 20px 0;
-    thead {
-      tr {
-        th {
-          vertical-align: bottom;
-          border-bottom: 1px solid #DADADA;
-          padding: 10px 8px 5px 8px;
-          font-size: 13px;
-          text-align: left;
-          background: #3d3d3e;
-          color: #c0c0c0;
-          font-weight: 400;
+  .table_container {
+    overflow: auto;
+
+    // show scrollbar
+    &::-webkit-scrollbar {
+        -webkit-appearance: none;
+        width: 7px;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background-color: rgba(0,0,0,.5);
+        -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 100%;
+      line-height: 25px;
+      margin: 20px 0 20px 0;
+      thead {
+        tr {
+          th {
+            vertical-align: bottom;
+            border-bottom: 1px solid #DADADA;
+            padding: 10px 8px 5px 8px;
+            font-size: 13px;
+            text-align: left;
+            background: #3d3d3e;
+            color: #c0c0c0;
+            font-weight: 400;
+            &:not(:first-child) {
+            }
+            &:not(:last-child) {
+            }
+            a {
+              color:#c0c0c0;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+      tbody {
+        td {
+          font-size: 12px;
+          color: #333;
+          padding: 7px 8px;
           &:not(:first-child) {
-          }
-          &:not(:last-child) {
-          }
-          a {
-            color:#c0c0c0;
-            font-weight: bold;
+            border-left: 1px solid #DADADA;
           }
         }
       }
-    }
-    tbody {
-      td {
-        font-size: 12px;
-        color: #333;
-        padding: 7px 8px;
-        &:not(:first-child) {
-          border-left: 1px solid #DADADA;
-        }
+      tr.odd {
+        background: #fff;
       }
-    }
-    tr.odd {
-      background: #fff;
-    }
-    tr.even {
-      background: #f8f8f8;
-    }
-    tr.selected {
-      background: #F0BEBE;
+      tr.even {
+        background: #f8f8f8;
+      }
+      tr.selected {
+        background: #F0BEBE;
+      }
     }
   }
 

@@ -3,19 +3,15 @@ module Snaptable
     module Collection
 
       def collection
-        @collection ||= if Snaptable.use_permission 
-          current_permission.records(params[:controller], model, @token)
-        else
-          model
-        end.includes(belongs_to_associations)
+        @collection.includes(belongs_to_associations)
       end
 
       def records
-        @records ||= filter(collection).paginate(page: params[:page], per_page: 30).order(sort_column + " " + sort_direction)
+        @records ||= filter(collection).paginate(page: params[paginate_key], per_page: 30).order(sort_column + " " + sort_direction)
       end
 
       def filter(collection)
-        if options[:search] == true
+        if options[:search] == true && !params[:query].blank?
           collection.joins(search_associations).where(query, query: "%#{params[:query]}%", id: params[:query].to_i)
         else
           collection
@@ -27,8 +23,8 @@ module Snaptable
       def query
         query_fields.map do |key, values|
           values.map do |value|
-            values.map{ |v| "#{key}.#{v} LIKE :query OR"}.join(" ")
-          end
+            "#{key}.#{value} LIKE :query OR"
+          end.join(" ")
         end.join(" ") + " #{column_name('id')} = :id"
       end
 

@@ -1,30 +1,26 @@
-# coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'snaptable/version'
+$:.push File.expand_path("../lib", __FILE__)
 
-Gem::Specification.new do |spec|
-  spec.name          = "snaptable"
-  spec.version       = Snaptable::VERSION
-  spec.authors       = ["khcr"]
-  spec.email         = ["kocher.ke@gmail.com"]
+# Maintain your gem's version:
+require "snaptable/version"
 
-  spec.summary       = "A gem that generate HTML tables from your models in order to display them in your admin views."
-  spec.description   = spec.summary
-  spec.homepage      = "http://github.com/khcr/snaptable"
-  spec.license       = "MIT"
+# Describe your gem and declare its dependencies:
+Gem::Specification.new do |s|
+  s.name        = "snaptable"
+  s.version     = Snaptable::VERSION
+  s.authors     = ["khcr"]
+  s.email       = ["kocher.ke@gmail.com"]
+  s.homepage    = "http://github.com/khcr/snaptable"
+  s.summary     = "A gem that generate HTML tables from your models in order to display them in your admin views."
+  s.description = s.summary
+  s.license     = "MIT"
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
-  spec.require_paths = ["lib"]
+  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.test_files = Dir["test/**/*"]
 
-  spec.add_development_dependency "bundler", "~> 1.8"
-  spec.add_development_dependency "rake", "~> 10.0"
+  s.add_dependency "rails", ">= 5.0.0"
+  s.add_dependency "will_paginate"
+  s.add_dependency "sass-rails"
+  s.add_dependency "jquery-rails"
 
-  spec.add_dependency "rails", ">= 4.2.0"
-  spec.add_dependency "railties", ">= 4.2.0"
-  spec.add_dependency "will_paginate", ">= 3.0.0"
-  spec.add_dependency "sass-rails", ">= 4.0.3"
-  spec.add_dependency "jquery-rails"
+  s.add_development_dependency "sqlite3"
 end

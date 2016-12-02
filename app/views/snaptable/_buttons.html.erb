@@ -1,8 +1,7 @@
-<div class="table_buttons">
-	<p>Actions</p>
-	<p>
-		<%= link_to "Ajouter", request.path + "/new", class: "add" %>
-		<a class="edit" href="#">Editer</a>
-		<a class="delete" href="#" data-method="delete" rel="nofollow" data-confirm="Etes-vous sûr de vouloir supprimer cette entrée ?">Supprimer</a>
-	</p>
-</div>
+<p><%= t("table.buttons.title") %></p>
+<p>
+  <%= add_button if Snaptable.add_button && add_button? %>
+  <%= edit_button if Snaptable.edit_button && edit_button? %>
+  <%= show_button if Snaptable.show_button && show_button? %>
+  <%= delete_button if Snaptable.delete_button && delete_button? %>
+</p>

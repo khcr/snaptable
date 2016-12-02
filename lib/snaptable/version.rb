@@ -1,3 +1,3 @@
 module Snaptable
-  VERSION = "0.5.0"
+  VERSION = "2.0"
 end

@@ -1,15 +1,18 @@
 module Snaptable
-  module Constructor    
+  module Constructor
     module Renderer
 
       def present(buttons: nil)
-        render_to_string('/snaptable/base', layout: false, locals: { presenter: self, buttons: buttons}).html_safe
+        @buttons = buttons || "snaptable/buttons"
+        render_to_string('/snaptable/base', layout: false, locals: { presenter: self }).html_safe
       end
 
       def respond
         respond_to do |format|
           format.html
-          format.js { render '/snaptable/sort' }
+          format.js do
+            render '/snaptable/sort', locals: { content: self.present(buttons: @buttons) }
+          end
         end
       end
 
@@ -30,16 +33,22 @@ module Snaptable
           else
             element.send(*attribute.keys).send(*attribute.values)
           end
-          format_if_date(attr_value)
+          format(attribute, attr_value)
         end
       end
 
-      def format_if_date(attr_value)
+      def format(attribute, attr_value)
         if attr_value.is_a?(Date) || attr_value.is_a?(Time) || attr_value.is_a?(DateTime)
-          attr_value.strftime("%d.%m.%y %H:%M")
+          l attr_value, format: :snaptable
+        elsif attribute.to_s.in? enums
+          t "#{model.model_name.i18n_key}.#{attribute.to_s.pluralize}.#{attr_value}"
         else
           attr_value
         end.to_s
+      end
+
+      def enums
+        model.defined_enums.keys
       end
 
     end

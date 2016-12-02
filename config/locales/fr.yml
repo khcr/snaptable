@@ -1,0 +1,18 @@
+fr:
+  time:
+    formats:
+      snaptable: "%d.%m.%y %H:%M"
+  date:
+    formats:
+      snaptable: "%d.%m.%y"
+  table:
+    nothing: "Il n'y a aucun élément à afficher"
+    search:
+      title: "Rechercher"
+      submit: "Chercher"
+    buttons:
+      title: "Actions"
+      add:  "Ajouter"
+      edit: "Editer"
+      show: "Voir"
+      delete: "Supprimer"

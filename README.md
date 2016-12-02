@@ -18,6 +18,24 @@ Or install it yourself as:
 
     $ gem install snaptable
 
+Include the assets:
+
+```css
+# application.css
+/*
+ *= require_self
+ *= require_tree .
+ *= require snaptable
+ */
+
+```
+
+```js
+# application.js
+//= require_tree .
+//= require snaptable
+```
+
 ## Usage
 
 ### Basic table
@@ -73,6 +91,26 @@ You can also configure the table in the view. The `present` method takes a singl
 <div>
   <%= @table.present(buttons: "my_custom_partial") %>
 </div>
+```
+To help you build your custom buttons header, you are provided two helper methods for each of the possible actions (add, show, edit, delete):
+
+* `#{action}_button` returns the HTML code to display the button for the desired action, e.g `add_button`.
+* `#{action}_button?` returns if the user is allowed to see the desired button, e.g. `delete_button?`.
+
+```erb
+<div id="custom-buttons">
+  <p>This is my custom table header !</p>
+  <%= add_button if add_button? %>
+<div>
+```
+
+Notice that you can customize the buttons header application-wide. With the following options, you decide which buttons are displayed by default.
+
+```ruby
+Snaptable.add_button = true
+Snaptable.edit_button = true
+Snaptable.delete_button = true
+Snaptable.show_button = false
 ```
 
 ### Custom class
@@ -139,16 +177,49 @@ class ArticleTable < BaseTable
   end
 ```
 
+### Multiple tables
+
+Snaptable supports multiple tables on the same page. However, if you want sorting for your tables to work, then type the following in the controller:
+
+```ruby
+def index
+  @user_table = UserTable.new(self)
+  @group_table = GroupTable.new(self)
+  Snaptable.respond_with(self, @user_table, @group_table)
+end
+```
+
+### Enums
+
+The gem supports enum's type in your model. If it detects a column that is an enum, it will automatically looks for the localized path `#{model.model_name.singular}.#{enum.pluralize}.#{enum_value}`. For example: `member.statuses.active`.
+
+### i18n
+
+To display date & time columns, the gem uses a format named `snaptable`. You can easily override it in your localization file:
+
+```yml
+# en.yml
+
+time:
+  format:
+    snaptable: "%m.d.%y %H:%M"
+
+```
+
+See the [localization files](config/locales) to see all the keys you can override.
+
+### Gotchas
+
+If you're using Postgresql, array types and want to enable searching, then you must create a custom table and specify the fields to search (see above). You must exclude the array columns from the search or it will raise an error.
+
 ### Permission
 
-if you want to use a permission system, you can enable it in an initializer.
+if you want to use the `adeia` gem which provides a permission system:
 
 ```ruby
 # initializers/snaptable.rb
 Snaptable.use_permission = true
 ```
-
-When the table fetches the data, it will use `current_permission.records(controller, model, token)`. It is up to you to implement the class and its method that respond to those three arguments.
 
 ## Contributing
 
