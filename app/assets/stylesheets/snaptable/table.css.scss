@@ -124,4 +124,20 @@
     }
   }
 
+  .pagination {
+    .previous_page, .next_page {
+      background-color: #3d3d3e;
+      padding: 5px 10px;
+      margin: 0 7px;
+      border-radius: 2px;
+      color: #c0c0c0;
+
+      &.disabled {
+        background-color: #aaa;
+        color: #fff;
+      }
+    }
+
+  }
+
 }

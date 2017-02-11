@@ -1,4 +1,8 @@
 fr:
+  will_paginate:
+    previous_label: "&#8592; Précédant"
+    next_label: "Suivant &#8594;"
+    page_gap: "&hellip;"
   time:
     formats:
       snaptable: "%d.%m.%y %H:%M"
