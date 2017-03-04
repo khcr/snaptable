@@ -1,5 +1,5 @@
 <div class="snaptable <%= presenter.table_name %>">
-	<%= render 'snaptable/search_field' if presenter.options[:search] == true %>
+	<%= render 'snaptable/search_field', presenter: presenter if presenter.options[:search] == true %>
 
 	<div class="table_buttons">
 		<%= render presenter.instance_variable_get(:@buttons) unless presenter.options[:buttons] == false %>
