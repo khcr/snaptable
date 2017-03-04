@@ -175,6 +175,7 @@ class ArticleTable < BaseTable
     end
 
   end
+end
 ```
 
 ### Multiple tables
