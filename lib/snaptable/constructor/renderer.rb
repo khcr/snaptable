@@ -40,7 +40,7 @@ module Snaptable
       def format(attribute, attr_value)
         if attr_value.is_a?(Date) || attr_value.is_a?(Time) || attr_value.is_a?(DateTime)
           l attr_value, format: :snaptable
-        elsif attribute.to_s.in? enums
+        elsif !attr_value.nil? && attribute.to_s.in?(enums)
           t "#{model.model_name.i18n_key}.#{attribute.to_s.pluralize}.#{attr_value}"
         else
           attr_value
