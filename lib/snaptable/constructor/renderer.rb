@@ -39,12 +39,13 @@ module Snaptable
 
       def format(attribute, attr_value)
         if attr_value.is_a?(Date) || attr_value.is_a?(Time) || attr_value.is_a?(DateTime)
-          l attr_value, format: :snaptable
+          attr_value = l(attr_value, format: :snaptable)
         elsif !attr_value.nil? && attribute.to_s.in?(enums)
-          t "#{model.model_name.i18n_key}.#{attribute.to_s.pluralize}.#{attr_value}"
-        else
-          attr_value
-        end.to_s
+          attr_value = t("#{model.model_name.i18n_key}.#{attribute.to_s.pluralize}.#{attr_value}")
+        end
+        attr_value = view_context.strip_tags(attr_value.to_s)
+        attr_value = view_context.truncate(attr_value, length: 40) unless options[:truncate] == false
+        return attr_value
       end
 
       def enums

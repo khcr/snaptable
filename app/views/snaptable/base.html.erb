@@ -19,7 +19,7 @@
 					<% presenter.records.each do |record| %>
 						<tr class="<%= cycle('odd', 'even') %>" data-url="<%= record.send(presenter.url) %>">
 							<% presenter.values(record).each do |value| %>
-								<td><%= truncate((strip_tags value), length: 40) %></td>
+								<td><%= value %></td>
 							<% end %>
 						</tr>
 					<% end %>
