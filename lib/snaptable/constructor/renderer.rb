@@ -11,7 +11,7 @@ module Snaptable
         respond_to do |format|
           format.html
           format.js do
-            render '/snaptable/sort', locals: { content: self.present(buttons: @buttons) }
+            render '/snaptable/sort', locals: { content: self.present(buttons: params[:buttons]) }
           end
         end
       end

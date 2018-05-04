@@ -4,7 +4,7 @@ module Snaptable
 
       def sortable(column)
         if model.reflect_on_association(column.gsub /_id/, '').nil?
-          view_context.link_to({sort: column, direction: direction(column), query: params[:query], paginate_key => page, table: table_name}, {remote: true, class: css_class(column)}) do
+          view_context.link_to({sort: column, direction: direction(column), query: params[:query], paginate_key => page, table: table_name, buttons: @buttons}, {remote: true, class: css_class(column)}) do
             model.human_attribute_name(column)
           end
         else

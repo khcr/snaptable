@@ -12,7 +12,7 @@ module Snaptable
 
       def filter(collection)
         if options[:search] == true && !params[:query].blank?
-          collection.joins(search_associations).where(query, query: "%#{params[:query]}%", id: params[:query].to_i)
+          collection.joins(search_associations).where(query, query: "%#{params[:query].downcase}%", id: params[:query].to_i)
         else
           collection
         end
@@ -23,7 +23,7 @@ module Snaptable
       def query
         query_fields.map do |key, values|
           values.map do |value|
-            "#{key}.#{value} LIKE :query OR"
+            "LOWER(#{key}.#{value}) LIKE :query OR"
           end.join(" ")
         end.join(" ") + " #{column_name('id')} = :id"
       end
