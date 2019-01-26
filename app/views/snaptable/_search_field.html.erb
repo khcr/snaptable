@@ -1,6 +1,6 @@
 <div class="search">
 	<p><%= t("table.search.title") %></p>
-	<%= form_tag nil, method: :get, remote: true do %>
+	<%= form_tag request.fullpath, method: :get, remote: true do %>
 		<%= hidden_field_tag :table, presenter.table_name %>
 		<%= hidden_field_tag :buttons, presenter.instance_variable_get(:@buttons) %>
 		<%= search_field_tag :query, params[:query] %>
