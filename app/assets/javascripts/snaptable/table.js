@@ -9,7 +9,11 @@ function snapifyTable(snaptable) {
       editButton = tableButtons.find("a[class='edit']"),
       deleteButton = tableButtons.find("a[class='delete']"),
       showButton = tableButtons.find("a[class='show']"),
-      path = window.location.pathname + "/";
+      path = window.location.pathname + "/",
+      urlParams = new URLSearchParams(location.search),
+      token = urlParams.get('token');
+  
+  var paramsStr = (token ? ("?token=" + token) : "")
 
   // add ajax to the pagination
   snaptable.on("click", ".pagination a", function() {
@@ -19,14 +23,14 @@ function snapifyTable(snaptable) {
 
   // line clickable
   snaptable.on("click", "tbody tr", function(e) {
-    var id = $(this).data("url") ;
+    var id = $(this).data("url");
     if ( typeof id !== "undefined" && !$(this).hasClass("selected") ) {
       snaptable.find("tr.selected").removeClass("selected");
       $(this).addClass("selected");
       deleteButton.add(editButton).add(showButton).addClass("on");
-      editButton.attr("href", path + id + "/edit");
-      deleteButton.attr("href", path + id);
-      showButton.attr("href", path + id);
+      editButton.attr("href", path + id + "/edit" + paramsStr);
+      deleteButton.attr("href", path + id + paramsStr);
+      showButton.attr("href", path + id + paramsStr);
     }
   });
 
