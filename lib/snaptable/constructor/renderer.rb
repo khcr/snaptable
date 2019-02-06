@@ -28,27 +28,30 @@ module Snaptable
 
       def values(element)
         attributes.map do |attribute|
-          attr_value = if attribute.is_a?(Symbol) || attribute.is_a?(String)
-            element.send(attribute)
-          else
-            element.send(*attribute.keys).send(*attribute.values)
+          if attribute.is_a?(Symbol) || attribute.is_a?(String)
+            attr_value = element.send(attribute)
+          else # a hash { model: :attribute }
+            attr_value = element.send(attribute.keys[0]).send(attribute.values[0])
+            attr_model = attribute.keys[0].to_s.capitalize.constantize
+            attribute = attribute.values[0]
           end
-          format(attribute, attr_value)
+          format(attribute, attr_value, attr_model)
         end
       end
 
-      def format(attribute, attr_value)
+      def format(attribute, attr_value, attr_model)
+        attr_model ||= model
         if attr_value.is_a?(Date) || attr_value.is_a?(Time) || attr_value.is_a?(DateTime)
           attr_value = l(attr_value, format: :snaptable)
-        elsif !attr_value.nil? && attribute.to_s.in?(enums)
-          attr_value = t("#{model.model_name.i18n_key}.#{attribute.to_s.pluralize}.#{attr_value}")
+        elsif !attr_value.nil? && attribute.to_s.in?(enums(attr_model))
+          attr_value = t("#{attr_model.model_name.i18n_key}.#{attribute.to_s.pluralize}.#{attr_value}")
         end
         attr_value = view_context.strip_tags(attr_value.to_s)
         attr_value = view_context.truncate(attr_value, length: 40) unless options[:truncate] == false
         return attr_value
       end
 
-      def enums
+      def enums(model)
         model.defined_enums.keys
       end
 
