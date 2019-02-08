@@ -32,7 +32,7 @@ module Snaptable
             attr_value = element.send(attribute)
           else # a hash { model: :attribute }
             attr_value = element.send(attribute.keys[0]).send(attribute.values[0])
-            attr_model = attribute.keys[0].to_s.capitalize.constantize
+            attr_model = string_to_class(attribute.keys[0].to_s)
             attribute = attribute.values[0]
           end
           format(attribute, attr_value, attr_model)
@@ -53,6 +53,14 @@ module Snaptable
 
       def enums(model)
         model.defined_enums.keys
+      end
+
+      def string_to_class(string)
+        begin
+          return string.classify.constantize
+        rescue NameError
+          return nil
+        end
       end
 
     end
