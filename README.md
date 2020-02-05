@@ -171,7 +171,7 @@ class ArticleTable < BaseTable
     end
 
     def self.fields
-      { articles: [:title, :content], user: [:name, :email], category: [:name] }
+      { articles: [:title, :content], users: [:name, :email], categories: [:name] }
     end
 
   end

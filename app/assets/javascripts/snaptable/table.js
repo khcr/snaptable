@@ -3,43 +3,53 @@
 
 /* Admin table */
 
+/* Admin table */
+
 function snapifyTable(snaptable) {
 
-  var tableButtons = snaptable.find(".table_buttons"),
-      editButton = tableButtons.find("a[class='edit']"),
-      deleteButton = tableButtons.find("a[class='delete']"),
-      showButton = tableButtons.find("a[class='show']"),
+  var tableButtons = snaptable.querySelector(".table_buttons"),
+      editButton = tableButtons.querySelector("a.edit"),
+      deleteButton = tableButtons.querySelector("a.delete"),
+      showButton = tableButtons.querySelector("a.show"),
       path = window.location.pathname + "/",
       urlParams = new URLSearchParams(location.search),
       token = urlParams.get('token');
   
   var paramsStr = (token ? ("?token=" + token) : "")
 
-  // add ajax to the pagination
-  snaptable.on("click", ".pagination a", function() {
-    $.getScript(this.href);
-    return false;
-  });
-
   // line clickable
-  snaptable.on("click", "tbody tr", function(e) {
-    var id = $(this).data("url");
-    if ( typeof id !== "undefined" && !$(this).hasClass("selected") ) {
-      snaptable.find("tr.selected").removeClass("selected");
-      $(this).addClass("selected");
-      deleteButton.add(editButton).add(showButton).addClass("on");
-      editButton.attr("href", path + id + "/edit" + paramsStr);
-      deleteButton.attr("href", path + id + paramsStr);
-      showButton.attr("href", path + id + paramsStr);
+  snaptable.querySelector("tbody").addEventListener("click", function(e) {
+    var target = e.target.parentElement; // td is clicked, tr is the direct parent
+    var id = target.dataset.url;
+    if (typeof id !== "undefined" && !target.classList.contains("selected")) {
+      // change selected row
+      var selected = snaptable.querySelector("tr.selected");
+      if (selected) {
+        snaptable.querySelector("tr.selected").classList.remove("selected");
+      }
+      target.classList.add("selected");
+      // update the buttons
+      if (showButton) {
+        showButton.classList.add("on");
+        showButton.setAttribute("href", path + id + paramsStr);
+      }
+      if (editButton) {
+        editButton.classList.add("on");
+        editButton.setAttribute("href", path + id + "/edit" + paramsStr);
+      }
+      if (deleteButton) {
+        deleteButton.classList.add("on");
+        deleteButton.setAttribute("href", path + id + paramsStr);
+      }      
     }
   });
 
-  // Double click
-  if(editButton.length) {
-    snaptable.on("dblclick", "tbody tr", function() {
-      var id = $(this).data("url");
+  if(editButton) {
+    snaptable.querySelector("tbody").addEventListener("dblclick", function(e) {
+      var target = e.target.parentElement; // td is clicked, tr is the direct parent
+      var id = target.dataset.url;
       if ( typeof id !== "undefined" ) {
-        window.location = path + id + "/edit";
+        window.location = path + id + "/edit" + paramsStr;
       }
     });
   }
@@ -48,14 +58,11 @@ function snapifyTable(snaptable) {
 
 function snapifyTables() {
 
-  $(".snaptable").each(function() {
-    snapifyTable($(this));
+  document.querySelectorAll(".snaptable").forEach(function(table) {
+    snapifyTable(table);
   })
 
 }
 
-$(document).on("ready turbolinks:load", function() {
-
-  snapifyTables();
-
-});
+document.addEventListener("ready", snapifyTables);
+document.addEventListener("turbolinks:load", snapifyTables);
