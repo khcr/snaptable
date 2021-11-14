@@ -16,9 +16,9 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
-  s.add_dependency "rails", ">= 5.0.0"
-  s.add_dependency "will_paginate"
-  s.add_dependency "sassc-rails"
+  s.add_dependency "rails", "~> 6.0"
+  s.add_dependency "will_paginate", "~> 3.3"
+  s.add_dependency "sassc-rails", "~> 2.1"
 
-  s.add_development_dependency "sqlite3"
+  s.add_development_dependency "sqlite3", "~> 1.4"
 end
