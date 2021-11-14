@@ -3,8 +3,6 @@
 
 /* Admin table */
 
-/* Admin table */
-
 function snapifyTable(snaptable) {
 
   var tableButtons = snaptable.querySelector(".table_buttons"),
@@ -64,5 +62,4 @@ function snapifyTables() {
 
 }
 
-document.addEventListener("ready", snapifyTables);
-document.addEventListener("turbolinks:load", snapifyTables);
+document.addEventListener("DOMContentLoaded", snapifyTables);
