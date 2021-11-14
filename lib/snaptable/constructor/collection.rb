@@ -41,7 +41,7 @@ module Snaptable
       end
 
       def belongs_to_associations
-        model.reflect_on_all_associations(:belongs_to).map{ |a| a.name }
+        model.reflect_on_all_associations(:belongs_to).reject {|a| a.options[:polymorphic]}.map {|a| a.name}
       end
 
     end
